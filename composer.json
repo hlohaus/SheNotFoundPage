@@ -1,0 +1,33 @@
+{
+    "name": "she/admin-url",
+    "description": "Individual 404 page",
+    "version": "v1.0.0",
+    "type": "shopware-platform-plugin",
+    "license": "Proprietary",
+    "authors": [
+        {
+            "name": "S.HE Business GmbH"
+        }
+    ],
+    "require": {
+        "shopware/core": "*",
+        "shopware/administration": "*",
+        "shopware/storefront": "*"
+    },
+    "extra": {
+        "shopware-plugin-class": "She\\NotFoundPage\\SheNotFoundPage",
+        "label": {
+            "de-DE": "Individuelle 404-Seite",
+            "en-GB": "Individual 404 page"
+        },
+        "description": {
+            "de-DE": "Change the 404 page via a configuration",
+            "en-GB": "Ändere die 404-Seite über eine Konfiguration"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "She\\NotFoundPage\\": "src/"
+        }
+    }
+}

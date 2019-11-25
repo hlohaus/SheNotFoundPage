@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/master/src/Core/System/SystemConfig/Schema/config.xsd">
+
+    <card>
+        <title>Individual 404 page</title>
+        <title lang="de-DE">Individuelle 404-Seite</title>
+        <input-field>
+            <name>notFoundUrl</name>
+            <label>URL to 404 page</label>
+            <label lang="de-DE">URL zur 404-Seite</label>
+            <placeholder>/404</placeholder>
+            <helpText>The URL must begin with a slash.</helpText>
+            <helpText lang="de-DE">Die URL muss mit einem Schrägstrich beginnen.</helpText>
+        </input-field>
+    </card>
+</config>
