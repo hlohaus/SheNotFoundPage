@@ -5,14 +5,11 @@ namespace She\NotFoundPage\Components;
 use Shopware\Core\Framework\Seo\SeoResolver as CoreSeoResolver;
 use Shopware\Storefront\Framework\Seo\SeoResolver as StorefrontSeoResolver;
 
-if (class_exists(CoreSeoResolver::class)) {
-    class SeoResolver extends CoreSeoResolver
-    {
+if (!class_exists(CoreSeoResolver::class)) {
+    class_alias(StorefrontSeoResolver::class, CoreSeoResolver::class);
+}
 
-    }
-} else {
-    class SeoResolver extends StorefrontSeoResolver
-    {
+class SeoResolver extends CoreSeoResolver
+{
 
-    }
 }
