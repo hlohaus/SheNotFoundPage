@@ -3,7 +3,6 @@
 namespace She\NotFoundPage\Components;
 
 use She\NotFoundPage\SheNotFoundPage;
-use Shopware\Core\Framework\Seo\SeoResolverInterface;
 use Shopware\Core\PlatformRequest;
 use Shopware\Core\SalesChannelRequest;
 use Shopware\Core\System\SalesChannel\Context\SalesChannelContextServiceInterface;
@@ -28,7 +27,7 @@ class RequestListener implements EventSubscriberInterface
     private $httpKernel;
 
     /**
-     * @var SeoResolverInterface
+     * @var SeoResolver
      */
     private $seoResolver;
 
@@ -37,7 +36,7 @@ class RequestListener implements EventSubscriberInterface
      */
     private $contextService;
 
-    public function __construct(SystemConfigService $configService, HttpKernelInterface $httpKernel, SeoResolverInterface $seoResolver, SalesChannelContextServiceInterface $contextService)
+    public function __construct(SystemConfigService $configService, HttpKernelInterface $httpKernel, SeoResolver $seoResolver, SalesChannelContextServiceInterface $contextService)
     {
         $this->configService = $configService;
         $this->httpKernel = $httpKernel;
