@@ -3,6 +3,7 @@
 namespace She\NotFoundPage\Components;
 
 use She\NotFoundPage\SheNotFoundPage;
+use Shopware\Core\Framework\ShopwareHttpException;
 use Shopware\Core\PlatformRequest;
 use Shopware\Core\SalesChannelRequest;
 use Shopware\Core\System\SalesChannel\Context\SalesChannelContextServiceInterface;
@@ -56,10 +57,14 @@ class RequestListener implements EventSubscriberInterface
             return;
         }
 
-        /** @var HttpException $exception */
+        /** @var HttpException|ShopwareHttpException $exception */
         $exception = $event->getException();
 
-        if (!$exception instanceof HttpException || $exception->getStatusCode() !== 404) {
+        if (!$exception instanceof HttpException && !$exception instanceof ShopwareHttpException) {
+            return;
+        }
+
+        if ($exception->getStatusCode() !== 404) {
             return;
         }
 
@@ -86,6 +91,8 @@ class RequestListener implements EventSubscriberInterface
 
         $clone = $request->duplicate();
         $clone->server->set('REQUEST_URI', $url);
+        $clone->attributes->remove('_controller');
+
         $clone->attributes->set(RequestTransformer::SALES_CHANNEL_RESOLVED_URI, $url);
         $clone->headers->add($request->headers->all());
 
